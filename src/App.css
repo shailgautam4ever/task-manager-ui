@@ -1,38 +1,179 @@
+* {
+  transition: all .1s 0s ease-out;
+}
+
+main {
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-variant: small-caps;
+  font-size: 3em;
+}
+
+input[type="checkbox"] {
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  
+  font: inherit;
+  color: red;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid red;
+  display: grid;
+  place-content: center;
+}
+
+dialog[open] {
+  box-shadow: 1px 1px 10px 1px gray;
+  border: none;
+  border-radius: 12px;
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+dialog .task-form {
+  flex-direction: column;
+  gap: 1rem;
+}
+dialog .task-form button {
+  width: 100%;
+}
+
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button, input, select {
+  border: none;
+  border: 1px solid teal;
+  outline: none;
+  border-radius: 10px;
+  padding: 8px 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  background-color: rgb(35, 147, 147);
+  color: white;
+  width: 150px;
+  cursor: pointer;
+}
+button:hover {
+  opacity: .8;
+  transform: scale(1.01);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.error-text {
+  color: red;
+  height: 20px;
+}
+
+.task-form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.task-form > input {
+  width: 10rem;
+}
+.task-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  list-style: none;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.no-item {
+  color: #999;
+  font-size: 2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.task-item {
+  box-shadow: 0px 0px 5px 3px #ddd;
+  width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.task-item .task-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+.task-item input {
+  cursor: pointer;
+}
+
+.task-info span {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.task-info span.completed {
+  text-decoration: line-through;
+}
+
+.task-item.high {
+  background-color: #fd552abf;
+}
+.task-item.medium {
+  background-color: rgb(244 241 118 / 69%);
+}
+.task-item.low {
+  background-color: rgb(144 182 182 / 72%);
+}
+
+.action-container {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 35px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.action-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Styles for mobile devices (portrait and landscape) */
+@media only screen and (max-width: 767px) {
+  /* Your styles for mobile devices here */
+  .task-form {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+  .task-form button {
+    width: 100%;
   }
+  .task-item {
+    width: 18rem;
+  }
+}
+
+/* Styles for tablets (portrait and landscape) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Your styles for tablets here */
 }
